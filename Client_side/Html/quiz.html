@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="/Client_side/CSS/quiz.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="nav">
+            <div><h1>NexQuiz</h1></div>
+            <div class="nav-toggle" id="nav-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About us</a>
+                <a href="#">Contact us</a>
+                <a href="#">Quiz</a>
+                <a href="#">Leaderboard</a>
+                <a href="#">Code</a>
+                <a href="#" id="login-btn">login</a>
+                <a href="#" id="sign-btn">Sign up</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-left">
+                <h2>Welcome to NexQuiz!</h2>
+                <p>NexQuiz is the ultimate quiz platform where you can test your knowledge across various categories, including programming, sports, movies, and more. Challenge yourself and compete with others to climb the leaderboard.</p>
+                <button onclick="location.href='/Client_side/Html/sign_up.html'" class="get-started-btn">Get  Started</button>
+            </div>
+            <div class="content-right">
+                <div><img src="/Client_side/images/1.jpg" alt="Quiz Image" id="img"></div>
+        </div>
+    </div>
+
+    <div class="container categories">
+        <h2>Select a Quiz Category</h2>
+        <div class="cards1">
+        <div class="card">
+            <img src="/Client_side/images/gk.png">
+            <button onclick="startQuiz(9)">General Knowledge</button>
+        </div>
+        <div class="card">
+            <img src="/Client_side/images/s.jpg">
+        <button onclick="startQuiz(21)">Sports</button>
+    </div>
+        <div class="card">
+            <img src="/Client_side/images/m.jpeg">
+        <button onclick="startQuiz(11)">Movies</button>
+    </div>
+    </div>
+    <div class="cards2">
+        <div class="card">
+            <img src="/Client_side/images/c.jpg">
+        <button onclick="startQuiz(18)">Computers</button>
+    </div>
+        <div class="card">
+            <img src="/Client_side/images/math.jpg">
+        <button onclick="startQuiz(19)">Mathematics</button>
+    </div>
+        <div class="card">
+            <img src="/Client_side/images/h.jpg">
+        <button onclick="startQuiz(23)">History</button>
+    </div>
+    </div>
+    </div>
+
+    <div id="quizContainer" class="container" style="display:none;">
+        <h2 id="question">Question will appear here</h2>
+        <div id="timer">Time Left: 20s</div>
+        <div id="options"></div>
+        <button id="nextButton" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div id="resultContainer" class="container" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="resultText"></p>
+        <button onclick="location.reload()">Restart Quiz</button>
+    </div>
+
+<div class="about">
+    <div>
+        <h1>About us</h1>
+    </div>
+    <div>
+        <p>
+            Welcome to NexQuiz, where curiosity meets challenge! Our app is designed for quiz lovers who enjoy testing their knowledge across a wide range of topics, from programming and science to movies, history, and more. With a sleek, user-friendly design and a real-time quiz format, we make learning fun and engaging. Each quiz is crafted to not only test what you know but also to help you discover new insights along the way. Dive in, challenge yourself, and see how much you can learn while having fun!</p>
+    </div>
+</div>
+
+<div class="performance">
+    <div>
+    <h1>Overall Performance</h1>
+</div>
+<div>
+    <p>The Overall Performance page gives you a complete view of your quiz activity. It showcases your total scores, category strengths, and progress over time, helping you understand your overall performance and guiding you toward continuous improvement. Keep track of your achievements and strive to enhance your knowledge with every quiz!    </p>
+    <a href="/Client_side/Html/profile.html">Profile</a>
+    </div>
+</div>
+
+<div class="contact">
+    <h1>Contact Us</h1>
+    <div><input type="text" placeholder="Name"></div>
+    <div><input type="email" placeholder="email"></div>
+    <div><textarea placeholder="Share your thoughts"></textarea></div>
+    <div><button>Submit</button></div>
+</div>
+
+<footer>
+    <div class="footer">
+    <div class="left-footer">
+        <h2>NexQuiz</h2>
+        <h3>rakeshraj12531@gmail.com</h3>
+        <h3>+91 9884411398</h3>
+        <div class="foot-logo">
+            <div><i class="fa-brands fa-instagram"></i></div>
+            <div><i class="fa-brands fa-linkedin-in"></i></div>
+        </div>
+    </div>
+    <div class="cen-footer">
+        <h3>Privacy Policy</h3>
+        <h3>About us</h3>
+        <h3>contact us</h3>
+        <h3>testimaonials</h3>
+    </div>
+    <div class="right-footer">
+        <h3>Testimonials</h3>
+        <h3>Leaderboard</h3>
+        <h3>Analytics</h3>
+        <h3>Start Quiz</h3>
+    </div>
+    </div>
+</footer>
+
+    <script src="/Client_side/Js/quiz.js"></script>
+    <script src="https://kit.fontawesome.com/313009947d.js" crossorigin="anonymous"></script>
+</body>
+</html>

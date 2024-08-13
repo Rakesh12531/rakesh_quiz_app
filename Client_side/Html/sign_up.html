@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Client_side/CSS/style1.css">
+    <title>Sign up</title>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form id="signUpForm">
+            <h1>Create Account</h1>
+            <span>or use your email for registration</span>
+            <input type="text" placeholder="Name" id="name"/>
+            <input type="email" placeholder="Email" id="semail"/>
+            <input type="password" placeholder="Password" id="spass"/>
+            <button type="button" id="btn1">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>Log in</h1>
+            <span>or use your account</span>
+            <input type="email" placeholder="Email" id="lemail"/>
+            <input type="password" placeholder="Password" id="lpass"/>
+            <a href="#">Forgot your password?</a>
+            <a href="#"><button id="btn2">Log In</button></a>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Log In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+
+        btn1.addEventListener('click', async () => {
+            const name = document.getElementById('name').value;
+            const mail = document.getElementById('semail').value;
+            const password = document.getElementById('spass').value;
+
+            const data = { name: name, mail: mail, password: password };
+
+            try {
+                const response = await fetch('http://localhost:4000/signup', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // Redirect to a success page or another desired location
+                     // Redirect URL for successful signup
+                } else {
+                    console.error('Error:', response.statusText);
+                    alert('Sign up failed.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sign up failed.');
+            }
+        });
+
+        btn2.addEventListener('click', async () => {
+            const lemail = document.getElementById('lemail').value;
+            const lpass = document.getElementById('lpass').value;
+
+            const data = { email: lemail, password: lpass };
+
+            try {
+                const response = await fetch('http://localhost:4000/signin', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.redirectUrl) {
+                        // Redirect to the page specified by the server response
+                        window.location.href = result.redirectUrl;
+                    } else {
+                        window.location.href = '/dashboard.html';  // Default redirect URL for successful sign-in
+                    }
+                } else {
+                    console.error('Error:', response.statusText);
+                    alert('Sign In failed.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sign In failed.');
+            }
+        });
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    });
+</script>
+
+</body>
+</html>
